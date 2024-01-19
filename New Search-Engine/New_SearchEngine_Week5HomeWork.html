@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
+    <link rel="stylesheet" href="SRC\styles.css" />
+    <title>Search Engine</title>
+  </head>
+  <body>
+    <div class="container">
+      <form id="Submit">
+        <input
+          type="search"
+          placeholder="Enter the city name:"
+          class="search-input"
+        />
+        <input type="submit" class="submit-btn" />
+      </form>
+      <h1>Amsterdam</h1>
+      <p>Tuesday, 11:32 AM</p>
+
+      <p>
+        <span class="more_details"
+          >Humidity:<strong>100%</strong>,Wind:<strong id="wind"
+            >15Km/h</strong
+          ></span
+        >
+      </p>
+      <h2>
+        <i
+          class="em-svg em-mostly_sunny"
+          aria-role="presentation"
+          aria-label="emoji"
+        ></i
+        ><span class="h2_temp">8</span><span class="temp_c">℃</span>
+      </h2>
+      <span class="desc">Mostly Cloudy</span>
+
+      <hr />
+      <footer>
+        This project was coded by
+        <strong><a href="">Sweta Panda</a></strong> with the help of
+        <strong><a href="https://shecodes.io">SheCodes</a></strong>
+      </footer>
+    </div>
+  </body>
+  <script>
+    // to show the current time
+    function showTimeDate() {
+      let now = new Date();
+      let current_day = now.getDay();
+      let current_hours = now.getHours();
+      let current_min = now.getMinutes();
+      // console.log(current_hours);
+      // console.log(current_min);
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      let day = days[current_day];
+
+      if (current_hours < 10) {
+        current_hours = `0${current_hours}`;
+      }
+
+      if (current_min < 10) {
+        current_min = `0${current_min}`;
+      }
+      let today_time = `${day},${current_hours}:${current_min}`;
+      console.log(today_time);
+      let today = document.querySelector("p");
+      today.innerHTML = `${today_time}`;
+    }
+    // showTimeDate(now);
+
+    // to show the temperature in realtime
+
+    function showTemp(response) {
+      // let apiURL = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}`;
+
+      console.log(response.data);
+
+      let temp = `${response.data.current.feelslike_c}`;
+      let show_temp = document.querySelector(".h2_temp");
+      show_temp.innerHTML = Math.round(temp);
+
+      let show_desc = document.querySelector(".desc");
+      show_desc.innerHTML = `${response.data.current.condition.text}`;
+
+      let humid_details = `${response.data.current.humidity}`;
+      let wind_details = `${response.data.current.wind_kph}`;
+    }
+    // to show the city name
+    function searchCity(event) {
+      event.preventDefault();
+      let city = document.querySelector("h1");
+      let search_city = document.querySelector(".search-input");
+      city.innerHTML = `${search_city.value}`;
+      let cityName = city.innerHTML;
+      console.log(cityName);
+      // let cityName = `${city.innerHTML}`;
+      //   console.log(search_city.value);
+      let apiKey = "147a5d4e22274503a0c71826230610";
+      let apiURL = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}`;
+      axios.get(apiURL).then(showTemp);
+    }
+    let submit = document.querySelector("#Submit");
+    submit.addEventListener("submit", searchCity);
+
+    // let apiKey = "147a5d4e22274503a0c71826230610";
+    // let cityName = document.querySelector("h1");
+
+    // let apiURL = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}`;
+    // axios.get(apiURL).then(showTemp);
+  </script>
+</html>

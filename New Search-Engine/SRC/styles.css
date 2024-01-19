@@ -1,0 +1,86 @@
+body {
+        background-color: #fff6e9;
+      }
+      div {
+        margin: 100px auto;
+        padding: 100px;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 10px;
+        font-family: "MD Primer Bold", Rubik, Lato, "Lucida Grande",
+          "Lucida Sans Unicode", Tahoma, sans-serif;
+        color: #191a21;
+        font-weight: bold;
+      }
+      h2 {
+        display: flex;
+        position: relative;
+        justify-content: right;
+        top: -95px;
+        right: 20px;
+        font-size: 24px;
+        color: #191a21;
+        font-family: "MD Primer Bold", Rubik, Lato, "Lucida Grande",
+          "Lucida Sans Unicode", Tahoma, sans-serif;
+        font-weight: bold;
+      }
+      p {
+        margin: 10px;
+        font-size: 12px;
+        font-family: Roboto, sans-serif;
+        font-weight: lighter;
+        color: #2a60ff;
+        font-weight: bold;
+      }
+      form {
+        padding: 10px;
+      }
+      strong {
+        color: #191a21;
+        font-weight: bold;
+      }
+      footer {
+        color: rgba(39, 33, 66, 0.4);
+        font-size: 10px;
+        text-align: center;
+      }
+
+      .container {
+        padding: 15px;
+        width: 500px;
+        height: 400px;
+        border-radius: 5px;
+        background-color: #f9f8fd;
+        border-color: #ffff;
+      }
+      .search-input {
+        padding: 12px;
+        width: 300px;
+        background-color: #ffff;
+        border: none;
+        border-radius: 5px;
+      }
+      .submit-btn {
+        margin: 10px;
+        padding: 10px;
+        width: 20%;
+        background-color: #2a60ff;
+        border-color: none;
+        border-style: none;
+        border-radius: 5px;
+        color: #ffff;
+        /* right: 25px; */
+      }
+      .desc {
+        top: -110px;
+        position: relative;
+        left: 360px;
+        padding: 15px;
+        color: #2a60ff;
+        font-family: Roboto, sans-serif;
+        font-size: 12px;
+        /* margin: 5px; */
+        font-weight: bold;
+      }
+    </style>
